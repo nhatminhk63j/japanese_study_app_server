@@ -1,0 +1,64 @@
+version: '3.7'
+
+services: 
+  main:
+    container_name: main
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    command: yarn start:dev
+    volumes: 
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports: 
+      - ${HTTP_PORT}:3000
+    env_file: 
+      - .env
+    networks: 
+      - redis_network
+      - mysql_network
+    depends_on: 
+      - redis
+      - mysql
+  
+  redis:
+    container_name: redis_01
+    image: "redis:alpine"
+    env_file: 
+      - .env
+    command: 'redis-server --requirepass ${REDIS_PASSWORD}'
+    volumes:
+      - ./volumes/redis:/var/lib/redis
+    ports:
+      - '${REDIS_PORT}:6379'
+
+    networks: 
+      - redis_network
+  
+  mysql:
+    container_name: mysql_01
+    image: mysql:8
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file: 
+      - .env
+    networks: 
+      - mysql_network
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+    volumes: 
+      - ./volumes/mysql:/var/lib/mysql
+    ports: 
+      - ${MYSQL_PORT}:3306
+
+networks: 
+  redis_network:
+    driver: bridge
+  mysql_network:
+    driver: bridge
