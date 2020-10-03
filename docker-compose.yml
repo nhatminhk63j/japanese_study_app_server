@@ -1,29 +1,27 @@
 version: '3.7'
 
 services: 
-  main:
-    container_name: main
-    build: 
-      context: .
-      dockerfile: Dockerfile
-      target: development
-    command: yarn start:dev
-    volumes: 
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    ports: 
-      - ${HTTP_PORT}:3000
-    env_file: 
-      - .env
-    networks: 
-      - redis_network
-      - mysql_network
-    depends_on: 
-      - redis
-      - mysql
+  # main:
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #     target: development
+  #   command: yarn start:dev
+  #   volumes: 
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports: 
+  #     - ${HTTP_PORT}:3000
+  #   env_file: 
+  #     - .env
+  #   networks: 
+  #     - redis_network
+  #     - mysql_network
+  #   depends_on: 
+  #     - redis
+  #     - mysql
   
   redis:
-    container_name: redis_01
     image: "redis:alpine"
     env_file: 
       - .env
@@ -37,7 +35,6 @@ services:
       - redis_network
   
   mysql:
-    container_name: mysql_01
     image: mysql:8
     restart: always
     command: --default-authentication-plugin=mysql_native_password

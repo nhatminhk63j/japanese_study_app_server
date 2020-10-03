@@ -36,3 +36,6 @@ lerna-debug.log*
 # ENV
 .env 
 env/*.env
+
+# Volumne docker compose
+volumes
