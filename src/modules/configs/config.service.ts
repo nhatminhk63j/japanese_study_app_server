@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Injectable } from '@nestjs/common';
-import IEnvConfig from './config.interface';
+import IEnvConfig from '../../interfaces/config.interface';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 @Injectable()

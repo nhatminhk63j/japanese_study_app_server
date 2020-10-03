@@ -1,3 +1,5 @@
+import { UserHttpModule } from './modules/users/http-user.module';
+import { ValidatorModule } from './modules/validators/validator.module';
 import { AllExceptionFilter } from './filters/exception.filter';
 import { LoggerModule } from './modules/loggers/logger.module';
 import { Module } from '@nestjs/common';
@@ -12,7 +14,9 @@ import { APP_FILTER } from '@nestjs/core';
       new ConfigService(`env/${process.env.NODE_ENV || 'development'}.env`).getTypeORMConfig()
     ),
     ConfigModule,
-    LoggerModule
+    LoggerModule,
+    ValidatorModule,
+    UserHttpModule,
   ],
   controllers: [],
   providers: [

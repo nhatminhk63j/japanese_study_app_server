@@ -1,7 +1,7 @@
-import { LoggerService } from '../loggers/logger.service';
-import { IBaseService } from './base.interface';
+import { LoggerService } from './../modules/loggers/logger.service';
+import { IBaseService } from './../interfaces/base-service.interface';
+import { BaseEntity } from './../db/entities/base.entity';
 import { DeleteResult, Repository } from 'typeorm';
-import { BaseEntity } from '../../db/entities/base.entity';
 import { EntityId } from 'typeorm/repository/EntityId';
 
 export class BaseService <T extends BaseEntity, R extends Repository<T>> implements IBaseService<T> {
