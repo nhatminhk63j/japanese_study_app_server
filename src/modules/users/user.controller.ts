@@ -13,12 +13,16 @@ import {
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { DeleteResult } from 'typeorm';
+import { ApiBody, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('users')
 export class UserController {
   constructor(private readonly service: UserService) {}
 
   @Get()
+  @ApiOperation({ summary: 'Find all users.' })
+  @ApiOkResponse({ type: [UserDto] })
   async index(): Promise<UserDto[]> {
     const users = await this.service.index();
 
@@ -26,6 +30,8 @@ export class UserController {
   }
 
   @Get('/inactive')
+  @ApiOperation({ summary: 'Find all users inactive.' })
+  @ApiOkResponse({ type: [UserDto] })
   async getInactive(): Promise<UserDto[]> {
     const users = await this.service.getInactiveUsers();
 
@@ -33,6 +39,8 @@ export class UserController {
   }
 
   @Get('/:id')
+  @ApiOperation({ summary: 'Get user by id.' })
+  @ApiOkResponse({ type: UserDto })
   async show(@Param('id') id: EntityId): Promise<UserDto> {
     const user = await this.service.findById(id);
     if (!user) {
@@ -43,6 +51,8 @@ export class UserController {
   }
 
   @Post()
+  @ApiOperation({ summary: 'Store new user.' })
+  @ApiOkResponse({ type: UserDto })
   async store(@Body() user: CreateUserDto): Promise<UserDto> {
     const createdUser = await this.service.store(user);
 
@@ -50,6 +60,8 @@ export class UserController {
   }
 
   @Put('/:id')
+  @ApiOperation({ summary: 'Update user information by id.' })
+  @ApiOkResponse({ type: UserDto })
   async update(
     @Param('id') id: EntityId,
     @Body() user: UpdateUserDto,
@@ -60,6 +72,8 @@ export class UserController {
   }
 
   @Delete('/:id')
+  @ApiOperation({ summary: 'Delete a user by id.' })
+  @ApiOkResponse({ type: DeleteResult })
   delete(@Param('id') id: EntityId): Promise<DeleteResult> {
     return this.service.delete(id);
   }
