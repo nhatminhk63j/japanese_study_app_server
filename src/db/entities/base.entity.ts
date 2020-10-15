@@ -1,4 +1,4 @@
-import { CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export class BaseEntity {
   @CreateDateColumn({
@@ -6,12 +6,12 @@ export class BaseEntity {
     default: `now()`,
     nullable: true,
   })
-  createdAt: string
+  createdAt: string;
 
   @UpdateDateColumn({
     name: 'updated_at',
     default: `now()`,
     nullable: true,
   })
-  updatedAt: string
+  updatedAt: string;
 }

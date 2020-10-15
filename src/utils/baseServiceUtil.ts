@@ -4,9 +4,10 @@ import { BaseEntity } from './../db/entities/base.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { EntityId } from 'typeorm/repository/EntityId';
 
-export class BaseService <T extends BaseEntity, R extends Repository<T>> implements IBaseService<T> {
-  protected readonly repository: R
-  protected readonly logger: LoggerService
+export class BaseService<T extends BaseEntity, R extends Repository<T>>
+  implements IBaseService<T> {
+  protected readonly repository: R;
+  protected readonly logger: LoggerService;
 
   constructor(repository: R, logger: LoggerService) {
     this.repository = repository;

@@ -12,7 +12,7 @@ class ConfigService {
   constructor(filePath: string) {
     const config = dotenv.parse(fs.readFileSync(filePath));
     this.envConfig = config;
-  };
+  }
 
   public getTypeORMConfig(): TypeOrmModuleOptions {
     const baseDir = path.join(__dirname, '../../');
@@ -33,8 +33,8 @@ class ConfigService {
       cli: {
         migrationsDir: 'src/db/migrations',
         entitiesDir: 'src/db/entities',
-      }
-    }
+      },
+    };
   }
 }
 

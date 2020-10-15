@@ -11,7 +11,9 @@ import { APP_FILTER } from '@nestjs/core';
 @Module({
   imports: [
     TypeOrmModule.forRoot(
-      new ConfigService(`env/${process.env.NODE_ENV || 'development'}.env`).getTypeORMConfig()
+      new ConfigService(
+        `env/${process.env.NODE_ENV || 'development'}.env`,
+      ).getTypeORMConfig(),
     ),
     ConfigModule,
     LoggerModule,
@@ -22,7 +24,7 @@ import { APP_FILTER } from '@nestjs/core';
   providers: [
     {
       provide: APP_FILTER,
-      useClass: AllExceptionFilter
+      useClass: AllExceptionFilter,
     },
   ],
 })

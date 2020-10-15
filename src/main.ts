@@ -14,14 +14,16 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe(ValidationConfig));
 
-  useContainer(app.select(ValidatorModule), { fallbackOnErrors: true});
+  useContainer(app.select(ValidatorModule), { fallbackOnErrors: true });
 
   const options = new DocumentBuilder()
     .setTitle('Japanese study.')
-    .setDescription('Application makes learning Japanese easier and more effective.')
+    .setDescription(
+      'Application makes learning Japanese easier and more effective.',
+    )
     .setVersion('1.0')
-    .build()
-  
+    .build();
+
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('docs', app, document);
 

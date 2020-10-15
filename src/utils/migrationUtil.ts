@@ -1,7 +1,6 @@
-import { TableColumnOptions } from "typeorm/schema-builder/options/TableColumnOptions";
+import { TableColumnOptions } from 'typeorm/schema-builder/options/TableColumnOptions';
 
 class MigrationUtil {
-
   public static getIDColumn(): TableColumnOptions {
     return {
       name: 'id',
@@ -9,11 +8,18 @@ class MigrationUtil {
       isPrimary: true,
       isNullable: false,
       isGenerated: true,
-      generationStrategy: 'increment'
-    }
+      generationStrategy: 'increment',
+    };
   }
 
-  public static getVarcharColumn({ name, length = '255', isPrimary = false, isNullable = false, isUnique = false, defaultValue = null }): TableColumnOptions {
+  public static getVarcharColumn({
+    name,
+    length = '255',
+    isPrimary = false,
+    isNullable = false,
+    isUnique = false,
+    defaultValue = null,
+  }): TableColumnOptions {
     return {
       name,
       length,
@@ -21,16 +27,19 @@ class MigrationUtil {
       isNullable,
       isUnique,
       default: `'${defaultValue}'`,
-      type: 'varchar'
+      type: 'varchar',
     };
   }
 
-  public static getBooleanColumn({ name, defaultValue = true }): TableColumnOptions {
+  public static getBooleanColumn({
+    name,
+    defaultValue = true,
+  }): TableColumnOptions {
     return {
       name,
       type: 'boolean',
-      default: defaultValue
-    }
+      default: defaultValue,
+    };
   }
 
   public static getCreatedAndUpdatedColumn(): TableColumnOptions[] {
@@ -39,15 +48,15 @@ class MigrationUtil {
         name: 'created_at',
         type: 'datetime',
         default: `now()`,
-        isNullable: true
+        isNullable: true,
       },
       {
         name: 'updated_at',
         type: 'datetime',
         default: `now()`,
-        isNullable: true
-      }
-    ]
+        isNullable: true,
+      },
+    ];
   }
 }
 

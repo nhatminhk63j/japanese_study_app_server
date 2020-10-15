@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { DeleteResult } from 'typeorm';
-import { ApiBody, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')
 @Controller('users')

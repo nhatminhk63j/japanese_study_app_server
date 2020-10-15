@@ -17,7 +17,7 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
     this.bcryptSalt = 10;
   }
 
-  listenTo(): string | Function {
+  listenTo() {
     return User;
   }
 

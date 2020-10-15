@@ -42,22 +42,22 @@ export class UserDto {
 export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty()
-  firstName: string
+  firstName: string;
 
   @ApiProperty()
   @IsNotEmpty()
-  lastName: string
+  lastName: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsEmail()
   @Validate(UniqueEmailValidator)
-  email: string
+  email: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @Length(8, 24)
-  password: string
+  password: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -65,12 +65,12 @@ export class CreateUserDto {
   password_confirmation: string;
 
   @ApiProperty({ required: false })
-  avatarUrl: string
+  avatarUrl: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsBoolean()
-  isActive: boolean
+  isActive: boolean;
 }
 
 export class UpdateUserDto {
@@ -88,14 +88,14 @@ export class UpdateUserDto {
   @IsOptional()
   @IsNotEmpty()
   @Validate(PasswordConfirmValidator, ['password'])
-  password_confirmation: string
+  password_confirmation: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
-  avatarUrl: string
+  avatarUrl: string;
 
   @ApiProperty()
   @IsOptional()
   @IsBoolean()
-  isActive: boolean
+  isActive: boolean;
 }

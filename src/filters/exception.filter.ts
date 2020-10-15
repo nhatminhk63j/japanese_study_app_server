@@ -1,5 +1,11 @@
 import { LoggerService } from '../modules/loggers/logger.service';
-import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from "@nestjs/common";
+import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { QueryFailedError } from 'typeorm';
 import { Response } from 'express';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces';
@@ -8,25 +14,27 @@ import { HttpArgumentsHost } from '@nestjs/common/interfaces';
 export class AllExceptionFilter implements ExceptionFilter {
   constructor(private logger: LoggerService) {}
 
-  private static handleResponse(response: Response, exception: HttpException | QueryFailedError | Error): void {
-    let responseBody: any = { message: 'Internal server error'}
+  private static handleResponse(
+    response: Response,
+    exception: HttpException | QueryFailedError | Error,
+  ): void {
+    let responseBody: any = { message: 'Internal server error' };
     let statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
-    if(exception instanceof HttpException) {
-      responseBody = exception.getResponse()
+    if (exception instanceof HttpException) {
+      responseBody = exception.getResponse();
       statusCode = exception.getStatus();
-    }
-    else if (exception instanceof QueryFailedError) {
+    } else if (exception instanceof QueryFailedError) {
       statusCode = HttpStatus.BAD_REQUEST;
       responseBody = {
         statusCode: statusCode,
         message: exception.message,
-      }
+      };
     } else if (exception instanceof Error) {
       responseBody = {
         statusCode: statusCode,
         message: exception.stack,
-      }
+      };
     }
 
     response.status(statusCode).json(responseBody);
@@ -43,16 +51,16 @@ export class AllExceptionFilter implements ExceptionFilter {
     AllExceptionFilter.handleResponse(response, exception);
   }
 
-  private handleMessage(exception: HttpException | QueryFailedError | Error): void {
+  private handleMessage(
+    exception: HttpException | QueryFailedError | Error,
+  ): void {
     let message = 'Internal server error';
 
-    if(exception instanceof HttpException) {
+    if (exception instanceof HttpException) {
       message = JSON.stringify(exception.getResponse());
-    }
-    else if (exception instanceof QueryFailedError) {
+    } else if (exception instanceof QueryFailedError) {
       message = exception.stack.toString();
-    }
-    else if (exception instanceof Error) {
+    } else if (exception instanceof Error) {
       message = exception.stack.toString();
     }
 
