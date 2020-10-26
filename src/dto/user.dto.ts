@@ -65,6 +65,7 @@ export class CreateUserDto {
   password_confirmation: string;
 
   @ApiProperty({ required: false })
+  @IsOptional()
   avatarUrl: string;
 
   @ApiProperty()

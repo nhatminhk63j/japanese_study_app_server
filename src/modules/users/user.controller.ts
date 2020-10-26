@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
 import { UserDto, CreateUserDto, UpdateUserDto } from './../../dto/user.dto';
 import { UserService } from './user.service';
 import { EntityId } from 'typeorm/repository/EntityId';
@@ -10,6 +11,7 @@ import {
   NotFoundException,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { DeleteResult } from 'typeorm';
@@ -17,6 +19,7 @@ import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')
 @Controller('users')
+@UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(private readonly service: UserService) {}
 
