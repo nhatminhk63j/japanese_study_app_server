@@ -1,3 +1,5 @@
+import { RolesGuard } from './../auth/guards/role.guard';
+import { UserRole } from './../../db/entities/user.entity';
 import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
 import { UserDto, CreateUserDto, UpdateUserDto } from './../../dto/user.dto';
 import { UserService } from './user.service';
@@ -16,14 +18,16 @@ import {
 import { plainToClass } from 'class-transformer';
 import { DeleteResult } from 'typeorm';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/decorators/role.decorator';
 
 @ApiTags('Users')
 @Controller('users')
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class UserController {
   constructor(private readonly service: UserService) {}
 
   @Get()
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Find all users.' })
   @ApiOkResponse({ type: [UserDto] })
   async index(): Promise<UserDto[]> {

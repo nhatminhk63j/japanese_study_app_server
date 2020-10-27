@@ -25,9 +25,6 @@ export class AuthController {
   async myProfile(@Request() request, @AuthUser() authUser): Promise<any> {
     const user = await this.userService.findById(authUser.sub);
 
-    return {
-      ...plainToClass(UserDto, user),
-      authUser,
-    };
+    return plainToClass(UserDto, user);
   }
 }

@@ -1,3 +1,4 @@
+import { UserRole } from './../db/entities/user.entity';
 import { PasswordConfirmValidator } from './../modules/validators/password.validator';
 import { UniqueEmailValidator } from './../modules/validators/email.validator';
 import {
@@ -37,6 +38,11 @@ export class UserDto {
   @IsNotEmpty()
   @IsBoolean()
   isActive: boolean;
+
+  @ApiProperty()
+  @Expose()
+  @IsNotEmpty()
+  role: UserRole;
 }
 
 export class CreateUserDto {
@@ -68,9 +74,8 @@ export class CreateUserDto {
   @IsOptional()
   avatarUrl: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsBoolean()
+  @ApiProperty({ required: false })
+  @IsOptional()
   isActive: boolean;
 }
 
@@ -95,8 +100,7 @@ export class UpdateUserDto {
   @IsOptional()
   avatarUrl: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @IsOptional()
-  @IsBoolean()
   isActive: boolean;
 }

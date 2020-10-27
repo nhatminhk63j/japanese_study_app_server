@@ -1,3 +1,4 @@
+import { UserRole } from './../entities/user.entity';
 import MigrationUtil from '../../utils/migrationUtil';
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
@@ -12,6 +13,14 @@ export class CreateUserTable1601631294569 implements MigrationInterface {
       MigrationUtil.getVarcharColumn({ name: 'password' }),
       MigrationUtil.getVarcharColumn({ name: 'avatar_url' }),
       MigrationUtil.getBooleanColumn({ name: 'is_active' }),
+      {
+        name: 'role',
+        type: 'enum',
+        enum: [UserRole.ADMIN, UserRole.EDITOR, UserRole.USER],
+        enumName: 'roleEnum',
+        default: `'${UserRole.USER}'`,
+        isNullable: false,
+      },
       ...MigrationUtil.getCreatedAndUpdatedColumn(),
     ],
   });
