@@ -10,14 +10,13 @@ import { ConfigModule } from '@nestjs/config';
 
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './modules/auth/auth.module';
-import databaseConfig from './configs/database.config';
 import authConfig from './configs/auth.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConfig, authConfig],
+      load: [authConfig],
     }),
     LoggerModule,
     ValidatorModule,

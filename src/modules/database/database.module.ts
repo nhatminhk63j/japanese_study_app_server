@@ -10,12 +10,12 @@ import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOpti
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) =>
         ({
-          type: configService.get<string>('type'),
-          host: configService.get<string>('host'),
-          port: configService.get<number>('port'),
-          username: configService.get<string>('username'),
-          password: configService.get<string>('password'),
-          database: configService.get<string>('database'),
+          port: parseInt(process.env.MYSQL_PORT),
+          type: 'mysql',
+          host: process.env.MYSQL_HOST,
+          username: process.env.MYSQL_USER,
+          password: process.env.MYSQL_PASSWORD,
+          database: process.env.MYSQL_DATABASE,
           entities: [User],
         } as MysqlConnectionOptions),
       inject: [ConfigService],
