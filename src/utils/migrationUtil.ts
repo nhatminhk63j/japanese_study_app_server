@@ -42,6 +42,23 @@ class MigrationUtil {
     };
   }
 
+  public static getEnumColumn({
+    name,
+    enumList,
+    enumName,
+    defaultValue,
+    isNullable = false,
+  }): TableColumnOptions {
+    return {
+      name,
+      type: 'enum',
+      enum: enumList,
+      enumName: enumName,
+      default: `'${defaultValue}'`,
+      isNullable: isNullable,
+    };
+  }
+
   public static getCreatedAndUpdatedColumn(): TableColumnOptions[] {
     return [
       {
