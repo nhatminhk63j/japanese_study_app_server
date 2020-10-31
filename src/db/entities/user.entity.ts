@@ -2,9 +2,9 @@ import { BaseEntity } from './base.entity';
 import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 export enum UserRole {
-  ADMIN = 'ADMIN',
-  EDITOR = 'EDITOR',
-  USER = 'USER',
+  ADMIN = 'admin',
+  EDITOR = 'editor',
+  USER = 'user',
 }
 
 @Entity({ name: 'users' })
