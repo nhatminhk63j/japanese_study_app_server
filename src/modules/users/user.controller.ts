@@ -37,6 +37,7 @@ export class UserController {
   }
 
   @Get('/inactive')
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Find all users inactive.' })
   @ApiOkResponse({ type: [UserDto] })
   async getInactive(): Promise<UserDto[]> {
@@ -46,6 +47,7 @@ export class UserController {
   }
 
   @Get('/:id')
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Get user by id.' })
   @ApiOkResponse({ type: UserDto })
   async show(@Param('id') id: EntityId): Promise<UserDto> {
@@ -57,7 +59,8 @@ export class UserController {
     return plainToClass(UserDto, user);
   }
 
-  @Post()
+  @Post('/create')
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Store new user.' })
   @ApiOkResponse({ type: UserDto })
   async store(@Body() user: CreateUserDto): Promise<UserDto> {
@@ -79,6 +82,7 @@ export class UserController {
   }
 
   @Delete('/:id')
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Delete a user by id.' })
   @ApiOkResponse({ type: DeleteResult })
   delete(@Param('id') id: EntityId): Promise<DeleteResult> {

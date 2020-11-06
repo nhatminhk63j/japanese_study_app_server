@@ -60,16 +60,6 @@ export class CreateUserDto {
   @Validate(UniqueEmailValidator)
   email: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @Length(8, 24)
-  password: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @Validate(PasswordConfirmValidator, ['password'])
-  password_confirmation: string;
-
   @ApiProperty({ required: false })
   @IsOptional()
   avatarUrl: string;
@@ -82,19 +72,11 @@ export class CreateUserDto {
 export class UpdateUserDto {
   @ApiProperty()
   @IsOptional()
-  name: string;
+  firstName: string;
 
   @ApiProperty()
   @IsOptional()
-  @IsNotEmpty()
-  @Length(8, 24)
-  password: string;
-
-  @ApiProperty()
-  @IsOptional()
-  @IsNotEmpty()
-  @Validate(PasswordConfirmValidator, ['password'])
-  password_confirmation: string;
+  lastName: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
