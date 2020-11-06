@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './modules/auth/auth.module';
 import authConfig from './configs/auth.config';
+import { VocabularyModule } from './vocabylaries/vocabulary.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import authConfig from './configs/auth.config';
     DatabaseModule,
     UserHttpModule,
     AuthModule,
+    VocabularyModule,
   ],
   controllers: [],
   providers: [

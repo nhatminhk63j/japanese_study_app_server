@@ -1,8 +1,8 @@
-import { LoggerService } from './../loggers/logger.service';
+import { LoggerService } from '../loggers/logger.service';
 import { UserRepository } from './user.repo';
-import { BaseService } from './../../utils/baseServiceUtil';
-import { User } from './../../db/entities/user.entity';
-import { IBaseService } from './../../interfaces/base-service.interface';
+import { BaseService } from '../../utils/baseServiceUtil';
+import { User } from '../../db/entities/user.entity';
+import { IBaseService } from '../../interfaces/base-service.interface';
 import { Injectable } from '@nestjs/common';
 
 interface IUserService extends IBaseService<User> {
