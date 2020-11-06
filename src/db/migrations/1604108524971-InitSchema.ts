@@ -9,7 +9,6 @@ export class InitSchema1604108524971 implements MigrationInterface {
       MigrationUtil.getVarcharColumn({ name: 'first_name' }),
       MigrationUtil.getVarcharColumn({ name: 'last_name' }),
       MigrationUtil.getVarcharColumn({ name: 'email', isUnique: true }),
-      MigrationUtil.getVarcharColumn({ name: 'password' }),
       MigrationUtil.getVarcharColumn({ name: 'avatar_url' }),
       MigrationUtil.getBooleanColumn({ name: 'is_active' }),
       MigrationUtil.getEnumColumn({
@@ -426,52 +425,52 @@ export class InitSchema1604108524971 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    // Drop table users
-    await queryRunner.dropTable(InitSchema1604108524971.userTable);
-
-    // Drop table categories.
-    await queryRunner.dropTable(InitSchema1604108524971.categoryTable);
-
-    // Drop table topics.
-    await queryRunner.dropTable(InitSchema1604108524971.topicTable);
-
-    // Drop table lessons.
-    await queryRunner.dropTable(InitSchema1604108524971.lessonTable);
-
-    // Drop table vocabularies.
-    await queryRunner.dropTable(InitSchema1604108524971.vocabularyTable);
-
-    // Drop table grammars.
-    await queryRunner.dropTable(InitSchema1604108524971.grammarTable);
-
-    // Drop table listenings.
-    await queryRunner.dropTable(InitSchema1604108524971.listeningTable);
-
-    // Drop table conventions.
-    await queryRunner.dropTable(InitSchema1604108524971.conventionTable);
-
-    // Drop table readings.
-    await queryRunner.dropTable(InitSchema1604108524971.readingTable);
-
-    // Drop table questions.
-    await queryRunner.dropTable(InitSchema1604108524971.questionTable);
-
-    // Drop table answers.
-    await queryRunner.dropTable(InitSchema1604108524971.answerTable);
-
-    // Drop table examples.
-    await queryRunner.dropTable(InitSchema1604108524971.exampleTable);
-
-    // Drop table exams.
-    await queryRunner.dropTable(InitSchema1604108524971.examTable);
-
-    // Drop table exam_libraries.
-    await queryRunner.dropTable(InitSchema1604108524971.examLibraryTable);
+    // Drop table sDrop
+    await queryRunner.dropTable(InitSchema1604108524971.scoreTable);
 
     // Drop table total_scores.
     await queryRunner.dropTable(InitSchema1604108524971.totalScoreTable);
 
-    // Drop table sDrop
-    await queryRunner.dropTable(InitSchema1604108524971.scoreTable);
+    // Drop table exam_libraries.
+    await queryRunner.dropTable(InitSchema1604108524971.examLibraryTable);
+
+    // Drop table exams.
+    await queryRunner.dropTable(InitSchema1604108524971.examTable);
+
+    // Drop table examples.
+    await queryRunner.dropTable(InitSchema1604108524971.exampleTable);
+
+    // Drop table answers.
+    await queryRunner.dropTable(InitSchema1604108524971.answerTable);
+
+    // Drop table questions.
+    await queryRunner.dropTable(InitSchema1604108524971.questionTable);
+
+    // Drop table readings.
+    await queryRunner.dropTable(InitSchema1604108524971.readingTable);
+
+    // Drop table conventions.
+    await queryRunner.dropTable(InitSchema1604108524971.conventionTable);
+
+    // Drop table listenings.
+    await queryRunner.dropTable(InitSchema1604108524971.listeningTable);
+
+    // Drop table grammars.
+    await queryRunner.dropTable(InitSchema1604108524971.grammarTable);
+
+    // Drop table vocabularies.
+    await queryRunner.dropTable(InitSchema1604108524971.vocabularyTable);
+
+    // Drop table lessons.
+    await queryRunner.dropTable(InitSchema1604108524971.lessonTable);
+
+    // Drop table topics.
+    await queryRunner.dropTable(InitSchema1604108524971.topicTable);
+
+    // Drop table categories.
+    await queryRunner.dropTable(InitSchema1604108524971.categoryTable);
+
+    // Drop table users
+    await queryRunner.dropTable(InitSchema1604108524971.userTable);
   }
 }

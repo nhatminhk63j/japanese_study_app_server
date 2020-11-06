@@ -1,5 +1,4 @@
 import { JWTStrategy } from './strategies/jwt.strategy';
-import { LocalStrategy } from './strategies/local.strategy';
 import { UserHttpModule } from './../users/http-user.module';
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -20,7 +19,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthService, LocalStrategy, JWTStrategy],
+  providers: [AuthService, JWTStrategy],
   controllers: [AuthController],
   exports: [AuthService],
 })
