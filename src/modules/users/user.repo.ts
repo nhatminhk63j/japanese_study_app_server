@@ -1,4 +1,4 @@
-import { User } from './../../db/entities/user.entity';
+import { User } from '../../db/entities/user.entity';
 
 import { EntityRepository, Repository } from 'typeorm';
 

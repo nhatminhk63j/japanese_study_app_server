@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('vocabularies')
 export class Vocabulary {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,5 +18,5 @@ export class Vocabulary {
   audio: string;
 
   @Column({ name: 'lesson_id' })
-  lessonId;
+  lessonId: number;
 }

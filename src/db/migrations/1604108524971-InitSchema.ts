@@ -36,6 +36,12 @@ export class InitSchema1604108524971 implements MigrationInterface {
       MigrationUtil.getIDColumn(),
       MigrationUtil.getVarcharColumn({ name: 'title' }),
       MigrationUtil.getVarcharColumn({ name: 'description' }),
+      MigrationUtil.getEnumColumn({
+        name: 'level',
+        enumList: ['n1', 'n2', 'n3', 'n4', 'n5'],
+        enumName: 'levelEnum',
+        defaultValue: 'n5',
+      }),
       {
         name: 'category_id',
         type: 'int',
