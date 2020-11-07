@@ -12,6 +12,7 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './modules/auth/auth.module';
 import authConfig from './configs/auth.config';
 import { VocabularyModule } from './modules/vocabylaries/vocabulary.module';
+import { LessonModule } from './modules/lessons/lesson.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { VocabularyModule } from './modules/vocabylaries/vocabulary.module';
     DatabaseModule,
     UserHttpModule,
     AuthModule,
+    LessonModule,
     VocabularyModule,
   ],
   controllers: [],

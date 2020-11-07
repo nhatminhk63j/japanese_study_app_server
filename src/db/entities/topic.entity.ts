@@ -26,4 +26,7 @@ export class Topic extends BaseEntity {
     default: Level.N5,
   })
   level: Level;
+
+  @Column({ name: 'category_id' })
+  categoryId: number;
 }
