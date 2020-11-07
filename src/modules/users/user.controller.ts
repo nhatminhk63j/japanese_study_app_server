@@ -1,7 +1,7 @@
-import { RolesGuard } from './../auth/guards/role.guard';
-import { UserRole } from './../../db/entities/user.entity';
-import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
-import { UserDto, CreateUserDto, UpdateUserDto } from './../../dto/user.dto';
+import { RolesGuard } from '../auth/guards/role.guard';
+import { UserRole } from '../../db/entities/user.entity';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { UserDto, CreateUserDto, UpdateUserDto } from '../../dto/user.dto';
 import { UserService } from './user.service';
 import { EntityId } from 'typeorm/repository/EntityId';
 import {

@@ -1,6 +1,6 @@
-import { UserRole } from './../db/entities/user.entity';
+import { UserRole } from '../db/entities/user.entity';
 import { PasswordConfirmValidator } from './../modules/validators/password.validator';
-import { UniqueEmailValidator } from './../modules/validators/email.validator';
+import { UniqueEmailValidator } from '../modules/validators/email.validator';
 import {
   IsBoolean,
   IsEmail,
