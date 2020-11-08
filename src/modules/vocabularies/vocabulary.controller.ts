@@ -1,16 +1,15 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { VocabularyService } from './vocabulary.service';
 import { ApiTags } from '@nestjs/swagger';
-import { VocabularyDto } from '../../dto/vocabulary.dto';
+import { BulkCreateDto, VocabularyDto } from '../../dto/vocabulary.dto';
 import { plainToClass } from 'class-transformer';
-import { EntityId } from 'typeorm/repository/EntityId';
 
 @ApiTags('Vocabulary')
 @Controller('vocabularies')
 export class VocabularyController {
   constructor(private readonly vocabularyService: VocabularyService) {}
 
-  @Get('/lesson/:lessonId')
+  @Get('/lessons/:lessonId')
   async getByLessonId(
     @Param('lessonId') lessonId: string,
   ): Promise<VocabularyDto[]> {
@@ -18,5 +17,13 @@ export class VocabularyController {
       parseInt(lessonId),
     );
     return plainToClass(VocabularyDto, vocabularies);
+  }
+
+  @Post('/lessons')
+  async bulkCreateByLessonId(@Body() request: BulkCreateDto): Promise<any> {
+    return await this.vocabularyService.bulkCreateByLessonId(
+      request.lessonId,
+      request.vocabularies,
+    );
   }
 }

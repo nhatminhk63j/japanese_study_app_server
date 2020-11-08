@@ -1,9 +1,10 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { type } from 'os';
 import { Vocabulary } from './vocabulary.entity';
+import { BaseEntity } from './base.entity';
 
 @Entity({ name: 'examples' })
-export class ExampleEntity {
+export class ExampleEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

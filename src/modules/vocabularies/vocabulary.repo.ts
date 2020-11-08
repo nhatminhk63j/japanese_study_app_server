@@ -7,7 +7,7 @@ import { Topic } from '../../db/entities/topic.entity';
 
 @EntityRepository(Vocabulary)
 export class VocabularyRepo extends Repository<Vocabulary> {
-  async getByLessonId(lessonId: EntityId): Promise<Vocabulary[]> {
+  getByLessonId(lessonId: EntityId): Promise<Vocabulary[]> {
     return this.createQueryBuilder('V')
       .leftJoinAndMapMany(
         'V.examples',

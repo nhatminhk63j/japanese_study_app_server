@@ -12,7 +12,8 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './modules/auth/auth.module';
 import authConfig from './configs/auth.config';
 import { HttpLessonModule } from './modules/lessons/http-lesson.module';
-import { HttpVocabularyModule } from './modules/vocabylaries/http-vocabulary.module';
+import { HttpVocabularyModule } from './modules/vocabularies/http-vocabulary.module';
+import { HttpExampleModule } from './modules/examples/http-example.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { HttpVocabularyModule } from './modules/vocabylaries/http-vocabulary.mod
     AuthModule,
     HttpLessonModule,
     HttpVocabularyModule,
+    HttpExampleModule,
   ],
   controllers: [],
   providers: [

@@ -19,4 +19,9 @@ export class LessonService extends BaseService<Lesson, LessonRepo>
   getByTopicId(topicId: EntityId): Promise<Lesson[]> {
     return this.repository.getByTopicId(topicId);
   }
+
+  async getCategoryId(id: EntityId): Promise<number> {
+    const lesson = await this.repository.getLessonWithTopic(id);
+    return (lesson as any).topic.categoryId;
+  }
 }

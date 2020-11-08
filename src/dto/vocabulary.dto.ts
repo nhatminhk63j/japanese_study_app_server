@@ -1,4 +1,5 @@
 import { Exclude, Expose, Type } from 'class-transformer';
+import { IsNotEmpty } from 'class-validator';
 
 @Expose()
 export class VocabularyDto {
@@ -29,4 +30,20 @@ class Example {
   relationId: number;
   @Exclude()
   categoryId: number;
+}
+
+export class VocabularyCreate {
+  kanji: string;
+  hiragana: string;
+  vietnamese: string;
+  audio: string;
+  examples: Example[];
+}
+
+export class BulkCreateDto {
+  @IsNotEmpty()
+  lessonId: number;
+
+  @IsNotEmpty()
+  vocabularies: VocabularyCreate[];
 }
