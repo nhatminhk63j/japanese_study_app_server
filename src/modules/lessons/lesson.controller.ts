@@ -12,7 +12,9 @@ import { LessonDto, LessonUpdate } from '../../dto/lesson.dto';
 import { plainToClass } from 'class-transformer';
 import { EntityId } from 'typeorm/repository/EntityId';
 import { DeleteResult } from 'typeorm';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Lesson')
 @Controller('lesson')
 export class LessonController {
   constructor(private readonly lessonService: LessonService) {}

@@ -3,6 +3,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
+import { Topic } from '../../db/entities/topic.entity';
+import { Lesson } from '../../db/entities/lesson.entity';
+import { Vocabulary } from '../../db/entities/vocabulary.entity';
+import { ExampleEntity } from '../../db/entities/example.entity';
 
 @Module({
   imports: [
@@ -16,7 +20,7 @@ import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOpti
           username: process.env.MYSQL_USER,
           password: process.env.MYSQL_PASSWORD,
           database: process.env.MYSQL_DATABASE,
-          entities: [User],
+          entities: [User, Topic, Lesson, Vocabulary, ExampleEntity],
         } as MysqlConnectionOptions),
       inject: [ConfigService],
     }),

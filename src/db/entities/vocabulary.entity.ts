@@ -1,7 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity } from './base.entity';
+import { ExampleEntity } from './example.entity';
 
 @Entity('vocabularies')
-export class Vocabulary {
+export class Vocabulary extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

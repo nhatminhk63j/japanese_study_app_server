@@ -22,7 +22,7 @@ import { Roles } from 'src/decorators/role.decorator';
 
 @ApiTags('Users')
 @Controller('users')
-@UseGuards(JwtAuthGuard, RolesGuard)
+// @UseGuards(JwtAuthGuard, RolesGuard)
 export class UserController {
   constructor(private readonly service: UserService) {}
 

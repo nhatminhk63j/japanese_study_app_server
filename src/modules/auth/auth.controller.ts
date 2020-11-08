@@ -14,8 +14,9 @@ import {
   Body,
 } from '@nestjs/common';
 import { AuthUser } from '../../decorators/auth.user.decorator';
-import { ApiBody, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBody, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
   constructor(
