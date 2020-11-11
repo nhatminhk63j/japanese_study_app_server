@@ -7,6 +7,10 @@ import { Topic } from '../../db/entities/topic.entity';
 import { Lesson } from '../../db/entities/lesson.entity';
 import { Vocabulary } from '../../db/entities/vocabulary.entity';
 import { ExampleEntity } from '../../db/entities/example.entity';
+import { ListeningEntity } from '../../db/entities/listening.entity';
+import { QuestionEntity } from '../../db/entities/question.entity';
+import { AnswerEntity } from '../../db/entities/answer.entity';
+import { ConventionEntity } from '../../db/entities/convention.entity';
 
 @Module({
   imports: [
@@ -20,7 +24,17 @@ import { ExampleEntity } from '../../db/entities/example.entity';
           username: process.env.MYSQL_USER,
           password: process.env.MYSQL_PASSWORD,
           database: process.env.MYSQL_DATABASE,
-          entities: [User, Topic, Lesson, Vocabulary, ExampleEntity],
+          entities: [
+            User,
+            Topic,
+            Lesson,
+            Vocabulary,
+            ExampleEntity,
+            ListeningEntity,
+            QuestionEntity,
+            AnswerEntity,
+            ConventionEntity,
+          ],
         } as MysqlConnectionOptions),
       inject: [ConfigService],
     }),

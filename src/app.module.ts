@@ -14,6 +14,8 @@ import authConfig from './configs/auth.config';
 import { HttpLessonModule } from './modules/lessons/http-lesson.module';
 import { HttpVocabularyModule } from './modules/vocabularies/http-vocabulary.module';
 import { HttpExampleModule } from './modules/examples/http-example.module';
+import { HttpListeningModule } from './modules/listenings/http-listening.module';
+import { HttpConventionModule } from './modules/conventions/http-convention.module';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { HttpExampleModule } from './modules/examples/http-example.module';
     HttpLessonModule,
     HttpVocabularyModule,
     HttpExampleModule,
+    HttpListeningModule,
+    HttpConventionModule,
   ],
   controllers: [],
   providers: [
