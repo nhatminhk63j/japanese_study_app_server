@@ -1,6 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ListeningService } from './listening.service';
-import { ListeningBulkCreate } from '../../dto/listening.dto';
+import { ListeningBulkCreate, ListeningDto } from '../../dto/listening.dto';
+import { classToPlain, plainToClass } from 'class-transformer';
 
 @Controller('listenings')
 export class ListeningController {
@@ -12,5 +13,15 @@ export class ListeningController {
       request.lessonId,
       request.listenings,
     );
+  }
+
+  @Get('/lessons/:lessonId')
+  async getListeningsByLessonId(
+    @Param('lessonId') lessonId: string,
+  ): Promise<ListeningDto[]> {
+    const listenings = await this.listeningService.getListeningsByLessonId(
+      parseInt(lessonId),
+    );
+    return plainToClass(ListeningDto, listenings);
   }
 }

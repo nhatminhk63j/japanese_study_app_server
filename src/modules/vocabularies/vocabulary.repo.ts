@@ -19,7 +19,6 @@ export class VocabularyRepo extends Repository<Vocabulary> {
       .leftJoin(Topic, 'Tp', 'Tp.id = Ls.topic_id')
       .where('V.lesson_id = :lessonId', { lessonId: lessonId })
       .andWhere('Ex.category_id = Tp.category_id')
-      .printSql()
       .getMany();
   }
 }

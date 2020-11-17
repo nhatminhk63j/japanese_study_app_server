@@ -1,23 +1,30 @@
-import { Type } from 'class-transformer';
+import { Exclude, Expose, Type } from 'class-transformer';
 import { QuestionCreateDto, QuestionDto } from './question.dto';
 import { AnswerCreateDto, AnswerDto } from './answer.dto';
 import { ConventionCreateDto, ConventionDto } from './convention.dto';
 import { IsNotEmpty } from 'class-validator';
 
+@Exclude()
 export class ListeningDto {
+  @Expose()
   picture: string;
 
+  @Expose()
   audio: string;
 
-  @Type(() => ConventionDto) conventions: ConventionDto[];
+  @Expose()
+  @Type(() => ConventionDto)
+  conventions: ConventionDto[];
 
-  @Type(() => QuestionAndAnswers) questionAndAnswers: QuestionAndAnswers[];
+  @Expose()
+  @Type(() => Question)
+  questions: Question[];
 }
 
-class QuestionAndAnswers {
-  @Type(() => QuestionDto) question: QuestionDto;
-
-  @Type(() => AnswerDto) answers: AnswerDto[];
+class Question extends QuestionDto {
+  @Expose()
+  @Type(() => AnswerDto)
+  answers: AnswerDto[];
 }
 
 export class ListeningCreate {

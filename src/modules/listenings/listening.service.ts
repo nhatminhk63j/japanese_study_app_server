@@ -70,4 +70,12 @@ export class ListeningService extends BaseService<
     }
     return Promise.resolve('Success');
   }
+
+  async getListeningsByLessonId(lessonId: number) {
+    const listenings = await this.repository.getListeningsByLessonId(lessonId);
+    // for (let listening of listenings) {
+    //
+    // }
+    return listenings;
+  }
 }
