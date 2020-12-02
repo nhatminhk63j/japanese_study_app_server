@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { TopicService } from './topic.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { EntityId } from 'typeorm/repository/EntityId';
@@ -31,5 +31,11 @@ export class TopicController {
   @ApiOperation({summary: 'Bulk create topics with category and level'})
   async bulkCreateTopicByCategoryAndLevel(@Body() topic: TopicDto[]): Promise<InsertResult> {
     return this.topicService.bulkCreate(topic);
+  }
+
+  @Delete('/:id')
+  @ApiOperation({summary: 'Delete topic by id'})
+  async deleteById(@Param('id') id: EntityId) {
+    return this.topicService.delete(id)
   }
 }
