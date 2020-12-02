@@ -6,6 +6,7 @@ import { EntityId } from 'typeorm/repository/EntityId';
 export class TopicRepo extends Repository<Topic> {
   getTopicByCategoryAndLevel(categoryId: EntityId, level: string) {
     return this.find({
+      select: ['description', 'title'],
       where: {
         categoryId: categoryId,
         level: level
