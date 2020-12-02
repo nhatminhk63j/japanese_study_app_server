@@ -11,6 +11,7 @@ import { ListeningEntity } from '../../db/entities/listening.entity';
 import { QuestionEntity } from '../../db/entities/question.entity';
 import { AnswerEntity } from '../../db/entities/answer.entity';
 import { ConventionEntity } from '../../db/entities/convention.entity';
+import { GrammarEntity } from '../../db/entities/grammar.entity';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { ConventionEntity } from '../../db/entities/convention.entity';
             QuestionEntity,
             AnswerEntity,
             ConventionEntity,
+            GrammarEntity,
           ],
         } as MysqlConnectionOptions),
       inject: [ConfigService],

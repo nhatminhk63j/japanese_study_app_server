@@ -17,6 +17,7 @@ import { HttpExampleModule } from './modules/examples/http-example.module';
 import { HttpListeningModule } from './modules/listenings/http-listening.module';
 import { HttpConventionModule } from './modules/conventions/http-convention.module';
 import { HttpGrammarModule } from './modules/grammars/http-grammar.module';
+import { HttpTopicModule } from './modules/topics/http-topic.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { HttpGrammarModule } from './modules/grammars/http-grammar.module';
     HttpListeningModule,
     HttpConventionModule,
     HttpGrammarModule,
+    HttpTopicModule,
   ],
   controllers: [],
   providers: [

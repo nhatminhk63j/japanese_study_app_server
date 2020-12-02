@@ -112,6 +112,10 @@ export class InitSchema1604108524971 implements MigrationInterface {
       MigrationUtil.getVarcharColumn({ name: 'use' }),
       MigrationUtil.getVarcharColumn({ name: 'explanation' }),
       {
+        name: 'order',
+        type: 'int',
+      },
+      {
         name: 'lesson_id',
         type: 'int',
       },

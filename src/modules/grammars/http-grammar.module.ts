@@ -5,7 +5,8 @@ import { GrammarController } from './grammar.controller';
 import { GrammarModule } from './grammar.module';
 
 @Module({
-  imports: [LoggerService, GrammarService, GrammarModule],
+  imports: [LoggerService, GrammarModule],
+  providers: [GrammarService],
   exports: [GrammarService],
   controllers: [GrammarController],
 })
