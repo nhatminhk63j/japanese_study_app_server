@@ -12,6 +12,12 @@ export class TopicDto {
   level: Level;
 
   categoryId: number;
+
+  @Exclude()
+  createdAt: string;
+
+  @Exclude()
+  updatedAt: string;
 }
 
 export class LessonUpdate {
