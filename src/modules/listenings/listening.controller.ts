@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ListeningService } from './listening.service';
 import { ListeningBulkCreate, ListeningDto } from '../../dto/listening.dto';
-import { classToPlain, plainToClass } from 'class-transformer';
+import { plainToClass } from 'class-transformer';
 
 @Controller('listenings')
 export class ListeningController {

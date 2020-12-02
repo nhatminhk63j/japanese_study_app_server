@@ -12,7 +12,7 @@ export class GrammarService extends BaseService<GrammarEntity, GrammarRepo> {
   }
 
   async getByLessonId(lessonId: number) {
-
+    return Promise.resolve("grammar");
   }
 
   bulkCreateByLessonId(lessonId: number, grammars: GrammarCreateDto[]) {
