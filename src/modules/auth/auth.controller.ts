@@ -24,6 +24,14 @@ export class AuthController {
     private readonly userService: UserService,
   ) {}
 
+  @UseGuards(LocalAuthGuard)
+  @Post('/login')
+  @ApiBody({type: BodyAuthDto})
+  login(@Request() request): Promise<{ accessToken: string }> {
+    return this.authService.generateJwtToken(request.user);
+  }
+
+
   @UseGuards(JwtAuthGuard)
   @Get('/me')
   @ApiOperation({ summary: 'Get me.' })

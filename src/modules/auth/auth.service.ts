@@ -25,6 +25,23 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
+  async validateUser(email: string, password: string): Promise<User> {
+    const user = await this.userService.findByEmail(email);
+
+    if (!user) {
+      throw new UnauthorizedException('Username or password is incorrect');
+    }
+
+    const compareResult = await bcrypt.compare(password, user.password);
+
+    if (!compareResult) {
+      throw new UnauthorizedException('Username or password is incorrect');
+    }
+
+    return user;
+  }
+
+
   async generateJwtToken(user: User): Promise<{ accessToken: string }> {
     const payload = {
       email: user.email,
@@ -58,6 +75,8 @@ export class AuthService {
         email: userGoogle.email,
         avatarUrl: userGoogle.picture,
         isActive: true,
+        password: userGoogle.email,
+        password_confirmation: userGoogle.email,
       };
 
       return this.userService.store(newUser);
@@ -79,12 +98,14 @@ export class AuthService {
     const user = await this.userService.findByEmail(userFacebook.email);
 
     if (!user) {
-      const newUser = {
+      const newUser: CreateUserDto = {
         firstName: userFacebook.name,
         lastName: '',
         email: userFacebook.email,
         avatarUrl: userFacebook.picture.data.url,
         isActive: true,
+        password: userFacebook.email,
+        password_confirmation: userFacebook.email,
       };
 
       return this.userService.store(newUser);

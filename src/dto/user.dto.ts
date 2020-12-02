@@ -60,29 +60,50 @@ export class CreateUserDto {
   @Validate(UniqueEmailValidator)
   email: string;
 
+  @ApiProperty()
+  @IsNotEmpty()
+  @Length(8, 24)
+  password: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @Validate(PasswordConfirmValidator, ['password'])
+  password_confirmation: string;
+
   @ApiProperty({ required: false })
   @IsOptional()
   avatarUrl: string;
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsBoolean()
   isActive: boolean;
 }
 
 export class UpdateUserDto {
   @ApiProperty()
   @IsOptional()
-  firstName: string;
+  name: string;
 
   @ApiProperty()
   @IsOptional()
-  lastName: string;
+  @IsNotEmpty()
+  @Length(8, 24)
+  password: string;
+
+  @ApiProperty()
+  @IsOptional()
+  @IsNotEmpty()
+  @Validate(PasswordConfirmValidator, ['password'])
+  password_confirmation: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   avatarUrl: string;
 
-  @ApiProperty({ required: false })
+  @ApiProperty()
   @IsOptional()
+  @IsBoolean()
   isActive: boolean;
 }
+
